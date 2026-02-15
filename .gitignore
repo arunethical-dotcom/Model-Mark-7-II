@@ -1,0 +1,7 @@
+﻿local model/
+*.gguf
+*.db
+*_log.txt
+debug_*.txt
+venv/
+__pycache__/

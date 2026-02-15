@@ -1,0 +1,13 @@
+# JARVIIS Core Requirements
+# Version: 0.1.0
+#
+# The core has ZERO external dependencies by design.
+# Python 3.10+ standard library only.
+#
+# Future phases will add:
+# - llama-cpp-python  # For local LLM inference
+# - chromadb          # For vector memory
+# - requests          # For web tools
+# - etc.
+#
+# For now: pip install -r requirements.txt will do nothing.
