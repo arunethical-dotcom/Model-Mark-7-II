@@ -1,4 +1,4 @@
-# JARVIIS (Just A Rather Very Intelligent Information System) On Development
+# JARVIIS (Just A Rather Very Intelligent Integrated System) On Development
 
 JARVIIS is a lightweight, production-grade **Cognitive Operating System Kernel**. It provides a deterministic, stateful foundation for running local agentic AI, prioritizing architectural discipline and reliability.
 
