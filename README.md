@@ -1,106 +1,101 @@
-# JARVIIS (Just A Rather Very Intelligent Information System)
+# JARVIIS (Just A Rather Very Intelligent Information System) On Development
 
-JARVIIS is a production-grade **Cognitive Operating System** designed to be the foundational nervous system for local agentic AI. Built with architectural discipline, it prioritizes stability, predictability, and extensibility over premature complexity.
+JARVIIS is a lightweight, production-grade **Cognitive Operating System Kernel**. It provides a deterministic, stateful foundation for running local agentic AI, prioritizing architectural discipline and reliability.
 
-## 🚀 Overview
-
-JARVIIS implements a **Finite State Machine (FSM)** driven orchestration layer that coordinates several independent subsystems:
-- **Core Orchestrator**: Manages the request lifecycle and subsystem routing.
-- **State Manager**: Enforces strict state transitions and provides full observability.
-- **Memory Subsystem**: Structured episodic memory with importance-aware retrieval.
-- **Reasoning Engine**: Rule-based logic with surgical LLM enhancement via Ollama.
-- **Tool System**: Extensible interface for filesystem, web search, and more.
-
-## 🏗️ Architecture Goals
-
-1.  **Clarity > Cleverness**: Pure Python implementation with minimal abstractions.
-2.  **Explicit State Control**: Every transition is validated by a formal State Machine.
-3.  **Dependency Inversion**: High-level core logic depends on abstract interfaces, not concrete implementations.
-4.  **Async-Ready**: Designed for a seamless transition to asynchronous execution (Phase 3).
-5.  **Observable by Design**: Full execution traces and state histories are built-in.
+## 🎯 Scope
+**Project Goal:** Agent OS Kernel
+JARVIIS is not an LLM or a simple chatbot; it is the **kernel** that manages the lifecycle, state transitions, and subsystem coordination of an autonomous cognitive agent. It satisfies the need for a formal, observable execution environment for local intelligence.
 
 ---
 
-## 🔧 Setup & Dependencies
+## 🏗️ Modular Topology
 
-JARVIIS is designed to run locally on consumer hardware (e.g., i5 CPU + 8GB RAM).
+The system is designed with a strict modular hierarchy to ensure zero circular dependencies and clear separation of concerns.
+
+```text
+jarviis/
+    core/           # Kernel orchestration & FSM
+    reasoning/      # Decision logic (Rules + LLM)
+    memory/         # Structured episodic recovery
+    tools/          # External action interfaces
+    config/         # Immutable system settings
+    __init__.py     # Package initialization
+```
+
+---
+
+## 🔧 Installation & Setup
 
 ### 1. Prerequisites
-- **Python 3.10+**
-- **Ollama** (Optional, for LLM-enhanced reasoning): [Download Ollama](https://ollama.ai)
+- **Python 3.10+** (Standard library only for core kernel)
+- **Ollama** (Optional, for LLM-enhanced reasoning)
 
-### 2. Installation
+### 2. Dependency Management
+Install the core kernel and optional intelligence modules:
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd jarviis
+# Core only
+pip install .
 
-# Install dependencies (Zero external dependencies for core!)
-pip install -r requirements.txt
-```
-
-### 3. Model Setup (Optional)
-If using the LLM-enhanced reasoning engine:
-```bash
-# Pull the recommended models
-ollama pull mistral:instruct
-ollama pull qwen2.5:0.5b-instruct
+# Core + LLM + Memory development
+pip install -e ".[llm,memory,dev]"
 ```
 
 ---
 
-## 💻 How to Run
+## 🚀 Entrypoint
 
-### Command Line Interface (CLI)
-Run the main demonstration script to interact with JARVIIS:
-```bash
-python main.py
-```
+JARVIIS is natively designed to be invoked as a module. This ensures proper package resolution and a consistent runtime environment.
 
-### Running Tests
-Verify the system integrity with the comprehensive test suite:
 ```bash
-python test_core.py      # Core FSM & Orchestrator tests
-python test_memory.py    # Memory subsystem tests
-python test_phase2.py    # Integration tests
-```
+# Run the core demonstration
+python -m jarviis.main
 
-### Examples
-Explore how to extend JARVIIS or use specific features:
-```bash
-python EXTENSION_EXAMPLE.py   # Code-level extension patterns
-python example_with_memory.py # Advanced memory interactions
+# Run in interactive mode
+python -m jarviis.main --interactive
 ```
 
 ---
 
-## 🏛️ System Architecture
+## 📚 API & Documentation
 
-### Finite State Machine (FSM)
-JARVIIS operates through a set of clearly defined states:
-`IDLE` → `LISTENING` → `REASONING` → `EXECUTING` → `LEARNING` → `REFLECTING`
+The JARVIIS kernel is defined by formal interfaces. See [core/interfaces.py](jarviis/core/interfaces.py) for the full contract documentation.
 
-| Phase | Description |
-| :--- | :--- |
-| **LISTENING** | Parses user input and context. |
-| **REASONING** | Decides the type of response or tool needed. |
-| **EXECUTING** | Performs external tool actions (Filesystem, Web). |
-| **LEARNING** | Persists interaction to structured episodic memory. |
+### Core Orchestration
+```python
+from jarviis.core.orchestrator import Orchestrator
 
-### Memory Strategy
-JARVIIS uses a multi-layered approach to memory:
-1.  **SQLite Storage**: Pure storage layer for persistence.
-2.  **Memory Router**: Decision layer for importance scoring (1-5 scale) and categorization.
-3.  **Retrieval**: Combines recent context with the most important historical memories.
+# Initialize with desired subsystems
+orchestrator = Orchestrator(
+    reasoner=CustomReasoner(),
+    memory=CustomMemory()
+)
+
+# Single cognitive cycle
+response = orchestrator.process_request("Analyze status.")
+```
+
+### State Machine Lifecycle
+Every request follows a validated FSM path:
+`IDLE` → `LISTENING` → `REASONING` → `EXECUTING` → `LEARNING` → `REFLECTING` → `IDLE`
 
 ---
 
-## 🔮 Roadmap
-- **Phase 2 (Current)**: Intelligence integration (LLMs, Vector Memory).
-- **Phase 3 (Upcoming)**: Asynchronous execution and streaming responses.
-- **Phase 4 (Future)**: Knowledge Graph integration and collective learning.
+## 🧪 Verification & Testing
+
+JARVIIS includes a high-integrity test suite that validates FSM logic and subsystem contracts.
+
+```bash
+# Run the full suite using pytest
+bash -c "PYTHONPATH=. pytest jarviis/"
+
+# Or individual tests
+python jarviis/test_core.py
+python jarviis/test_memory.py
+```
 
 ---
 
 ## 📄 License
+MIT License. High-integrity code for local intelligence systems.
+
 MIT License - Free for commercial and personal use.
