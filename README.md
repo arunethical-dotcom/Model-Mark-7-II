@@ -53,16 +53,7 @@ python jarviis\main
 # Run in interactive mode
 python start_jarviis.py --interactive mode
 ```
-```
-for test purpose : run these files jarviis\ 
-python test_backend.py
-python test_cognitive_import.py
-python test_core.py
-python test_governance_integration.py
-python test_llm_integration.py
-python test_memory.py
-python test_phase2.py
-```
+
 ---
 
 ## 📚 API & Documentation
@@ -100,6 +91,16 @@ bash -c "PYTHONPATH=. pytest jarviis/"
 # Or individual tests
 python jarviis/test_core.py
 python jarviis/test_memory.py
+```
+```
+for test purpose : run these files jarviis\ 
+python test_backend.py
+python test_cognitive_import.py
+python test_core.py
+python test_governance_integration.py
+python test_llm_integration.py
+python test_memory.py
+python test_phase2.py
 ```
 
 ---
