@@ -1,4 +1,4 @@
-# JARVIIS (Just A Rather Very Intelligent Integrated System) On Development
+# JARVIIS (Just A Rather Very Intelligent Integrated System) : Is currently on Development
 
 JARVIIS is a lightweight, production-grade **Cognitive Operating System Kernel**. It provides a deterministic, stateful foundation for running local agentic AI, prioritizing architectural discipline and reliability.
 
@@ -48,12 +48,21 @@ JARVIIS is natively designed to be invoked as a module. This ensures proper pack
 
 ```bash
 # Run the core demonstration
-python -m jarviis.main
+python jarviis\main
 
 # Run in interactive mode
-python -m jarviis.main --interactive
+python start_jarviis.py --interactive mode
 ```
-
+```
+for test purpose : run these files jarviis\ 
+python test_backend.py
+python test_cognitive_import.py
+python test_core.py
+python test_governance_integration.py
+python test_llm_integration.py
+python test_memory.py
+python test_phase2.py
+```
 ---
 
 ## 📚 API & Documentation
