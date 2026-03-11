@@ -1,6 +1,6 @@
 # JARVIIS (Just A Rather Very Intelligent Integrated System) : Is currently on Development
 
-JARVIIS is a lightweight, production-grade **Cognitive Operating System Kernel**. It provides a deterministic, stateful foundation for running local agentic AI, prioritizing architectural discipline and reliability.
+JARVIIS is a lightweight, **Cognitive Operating System Kernel**. It provides a deterministic, stateful foundation for running local agentic AI, prioritizing architectural discipline and reliability.
 
 ## 🎯 Scope
 **Project Goal:** Agent OS Kernel
