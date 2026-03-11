@@ -1,0 +1,46 @@
+[package]
+name    = "jarviis-core"
+version = "0.1.0"
+edition = "2021"
+
+# ─── Features ────────────────────────────────────────────────────────────────
+[features]
+default = []
+# Enable the real llama.cpp inference engine.
+# Requires a C++ toolchain and a GGUF model placed in models/.
+# Build with: cargo build --release --features llama
+llama = ["dep:llama-cpp-2", "dep:llama-cpp-sys-2"]
+
+# ─── Core dependencies ────────────────────────────────────────────────────────
+[dependencies]
+encoding_rs = "0.8"
+# Async runtime — controlled single-loop pattern (Tokio)
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "process", "io-util", "io-std"] }
+
+# HTTP client for Ollama API calls (async, efficient)
+reqwest = { version = "0.11", features = ["json"] }
+
+# Serialization — JSON over STDIO for Python tool bridge
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Error handling
+thiserror = "1"
+
+# SQLite-backed episodic memory store
+rusqlite = { version = "0.31", features = ["bundled"] }
+
+# Structured logging with per-state FSM traces
+tracing            = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+
+# ─── Optional: real llama.cpp inference engine ───────────────────────────────
+# Enabled only with --features llama
+[dependencies.llama-cpp-2]
+version  = "0.1.136"
+optional = true
+features = ["sampler"]
+
+[dependencies.llama-cpp-sys-2]
+version  = "0.1.136"
+optional = true
